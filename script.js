@@ -1,20 +1,48 @@
-const quotes = [
-    { text: "Sometimes you want to give up the guitar, you'll hate the guitar. But if you stick with it, you're gonna be rewarded.", author: "Jimi Hendrix" },
-    { text: "The guitar is your first wings. It's assigned and designed to unfold your vision and imagination.", author: "Carlos Santana" },
-    { text: "I just want to play the guitar and make people feel good.", author: "B.B. King" },
-    { text: "Nothing is more beautiful than a guitar, save perhaps two.", author: "Frederic Chopin" },
-    { text: "Guitar playing is just something that came to me and is really second nature now.", author: "Dave Mustaine" }
-];
+// script.js
 
-const quoteText = document.getElementById("quote-text");
-const quoteAuthor = document.getElementById("quote-author");
-const btn = document.getElementById("new-quote-btn");
+const startBtn = document.getElementById("startBtn");
 
-btn.addEventListener("click", () => {
-    // Get a random index from the quotes array
-    const randomIndex = Math.floor(Math.random() * quotes.length);
-    
-    // Update the DOM elements
-    quoteText.textContent = `"${quotes[randomIndex].text}"`;
-    quoteAuthor.textContent = `- ${quotes[randomIndex].author}`;
-});
+const speed = document.getElementById("speed");
+const ping = document.getElementById("ping");
+const download = document.getElementById("download");
+const upload = document.getElementById("upload");
+
+startBtn.addEventListener("click", startTest);
+
+function startTest(){
+
+  startBtn.innerText = "Testing...";
+  startBtn.disabled = true;
+
+  let current = 0;
+
+  let interval = setInterval(() => {
+
+    current += Math.random() * 8;
+
+    if(current >= 120){
+      current = 120;
+      clearInterval(interval);
+
+      finishTest();
+    }
+
+    speed.innerText = current.toFixed(1);
+
+  }, 150);
+
+}
+
+function finishTest(){
+
+  let pingValue = Math.floor(Math.random() * 20) + 5;
+  let downloadValue = (Math.random() * 150 + 50).toFixed(2);
+  let uploadValue = (Math.random() * 80 + 20).toFixed(2);
+
+  ping.innerText = pingValue + " ms";
+  download.innerText = downloadValue + " Mbps";
+  upload.innerText = uploadValue + " Mbps";
+
+  startBtn.innerText = "Run Again";
+  startBtn.disabled = false;
+}
