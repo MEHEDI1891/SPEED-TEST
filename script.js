@@ -1,48 +1,53 @@
 // script.js
 
-const startBtn = document.getElementById("startBtn");
+window.onload = function () {
 
-const speed = document.getElementById("speed");
-const ping = document.getElementById("ping");
-const download = document.getElementById("download");
-const upload = document.getElementById("upload");
+    const startBtn = document.getElementById("startBtn");
 
-startBtn.addEventListener("click", startTest);
+    const speed = document.getElementById("speed");
+    const ping = document.getElementById("ping");
+    const download = document.getElementById("download");
+    const upload = document.getElementById("upload");
 
-function startTest(){
+    startBtn.addEventListener("click", function () {
 
-  startBtn.innerText = "Testing...";
-  startBtn.disabled = true;
+        startBtn.innerText = "Testing...";
+        startBtn.disabled = true;
 
-  let current = 0;
+        let currentSpeed = 0;
 
-  let interval = setInterval(() => {
+        let test = setInterval(() => {
 
-    current += Math.random() * 8;
+            currentSpeed += Math.random() * 10;
 
-    if(current >= 120){
-      current = 120;
-      clearInterval(interval);
+            if (currentSpeed >= 120) {
 
-      finishTest();
-    }
+                clearInterval(test);
 
-    speed.innerText = current.toFixed(1);
+                currentSpeed = 120;
 
-  }, 150);
+                speed.innerText = currentSpeed.toFixed(1);
 
-}
+                ping.innerText =
+                    Math.floor(Math.random() * 20 + 5) + " ms";
 
-function finishTest(){
+                download.innerText =
+                    (Math.random() * 100 + 50).toFixed(2) + " Mbps";
 
-  let pingValue = Math.floor(Math.random() * 20) + 5;
-  let downloadValue = (Math.random() * 150 + 50).toFixed(2);
-  let uploadValue = (Math.random() * 80 + 20).toFixed(2);
+                upload.innerText =
+                    (Math.random() * 50 + 20).toFixed(2) + " Mbps";
 
-  ping.innerText = pingValue + " ms";
-  download.innerText = downloadValue + " Mbps";
-  upload.innerText = uploadValue + " Mbps";
+                startBtn.innerText = "Run Again";
+                startBtn.disabled = false;
 
-  startBtn.innerText = "Run Again";
-  startBtn.disabled = false;
-}
+            } else {
+
+                speed.innerText = currentSpeed.toFixed(1);
+
+            }
+
+        }, 120);
+
+    });
+
+};
