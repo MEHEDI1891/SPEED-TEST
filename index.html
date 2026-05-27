@@ -1,18 +1,65 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guitar Quotes</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Speed Test Pro</title>
+
+  <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-    <div class="quote-container">
-        <div class="icon">🎸</div>
-        <p id="quote-text">"Sometimes you want to give up the guitar, you'll hate the guitar. But if you stick with it, you're gonna be rewarded."</p>
-        <p id="quote-author">- Jimi Hendrix</p>
-        <button id="new-quote-btn">Next Quote</button>
+
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="assets/bg-video.mp4" type="video/mp4">
+  </video>
+
+  <!-- Overlay -->
+  <div class="overlay"></div>
+
+  <!-- Main Container -->
+  <div class="container">
+
+    <h1>⚡ Network Speed Test</h1>
+
+    <p class="quote">
+      "Fast internet, faster dreams."
+    </p>
+
+    <!-- Speed Circle -->
+    <div class="speed-circle">
+      <span id="speed">0</span>
+      <small>Mbps</small>
     </div>
-    <script src="script.js"></script>
+
+    <!-- Stats -->
+    <div class="stats">
+
+      <div class="card">
+        <h3>Ping</h3>
+        <p id="ping">0 ms</p>
+      </div>
+
+      <div class="card">
+        <h3>Download</h3>
+        <p id="download">0 Mbps</p>
+      </div>
+
+      <div class="card">
+        <h3>Upload</h3>
+        <p id="upload">0 Mbps</p>
+      </div>
+
+    </div>
+
+    <!-- Button -->
+    <button id="startBtn">Start Test</button>
+
+  </div>
+
+  <script src="script.js"></script>
+
 </body>
 </html>
